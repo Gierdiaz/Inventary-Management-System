@@ -5,11 +5,16 @@
 Este projeto é um ERP (Enterprise Resource Planning) desenvolvido com Laravel, focado na gestão eficiente de estoques. A aplicação é implementada como uma API RESTful, abrangendo funcionalidades essenciais para o gerenciamento de produtos, fornecedores, compras, vendas e relatórios de estoque.
 
 ### Módulos Incluídos
-- **Produtos:** Gerenciamento detalhado dos itens em estoque.
-- **Fornecedores:** Cadastro e controle de fornecedores com informações completas.
-- **Compras:** Registro e acompanhamento das aquisições de estoque.
-- **Vendas:** Gerenciamento das transações de vendas e clientes.
-- **Relatórios de Estoque:** Geração de relatórios abrangentes para monitoramento e análise de estoque.
+
+- **Usuários:** Gerenciamento de usuários com diferentes níveis de acesso.
+- **Perfis:** Cadastro de perfis de usuário com descrição.
+- **Categorias:** Gerenciamento de categorias para organização de produtos.
+- **Fornecedores:** Cadastro e controle de fornecedores com informações de contato.
+- **Produtos:** Detalhamento e controle de itens em estoque, incluindo preço de custo, preço de venda, quantidade em estoque e fornecedor associado.
+- **Movimentos de Estoque:** Registro de entradas e saídas de produtos no estoque.
+- **Compras:** Registro e acompanhamento de compras feitas de fornecedores, com detalhes de itens comprados e valor total.
+- **Vendas:** Gerenciamento de transações de vendas, incluindo informações do cliente, itens vendidos e valor total.
+
 
 ### Características
 Com uma complexidade bem equilibrada, este ERP oferece uma solução robusta e escalável para empresas que buscam otimizar a gestão de seus estoques utilizando as melhores práticas de desenvolvimento com Laravel.
