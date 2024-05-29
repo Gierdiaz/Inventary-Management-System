@@ -6,7 +6,7 @@ Este é um projeto simples de Sistema de Gerenciamento de Inventário, desenvolv
 
 ## ERP de Gestão de Estoque
 
-Este projeto é um ERP (Enterprise Resource Planning) desenvolvido com Laravel, focado na gestão eficiente de estoques. A aplicação abrange funcionalidades essenciais para o gerenciamento de produtos, fornecedores, compras, vendas e relatórios de estoque.
+Este projeto é um ERP (Enterprise Resource Planning) desenvolvido com Laravel, focado na gestão eficiente de estoques. A aplicação é implementada como uma API RESTful, abrangendo funcionalidades essenciais para o gerenciamento de produtos, fornecedores, compras, vendas e relatórios de estoque.
 
 ### Módulos Incluídos
 - **Produtos:** Gerenciamento detalhado dos itens em estoque.
@@ -63,10 +63,23 @@ Com uma complexidade bem equilibrada, este ERP oferece uma solução robusta e e
 
 A aplicação estará disponível em `http://localhost:8000`.
 
+## Uso da API
+
+A API fornece endpoints para gerenciar produtos, fornecedores, compras, vendas e gerar relatórios de estoque. A documentação completa dos endpoints pode ser encontrada [aqui](link-para-documentacao).
+
+### Exemplo de Requisição
+
+Para listar todos os produtos:
+
+GET /api/produtos
+
+A aplicação estará disponível em `http://localhost:8000`.
+
 ## Contribuição
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar pull requests.
 
 ## Licença
 
-Este projeto está licenciado sob a [MIT License](LICENSE).
+Este projeto está licenciado sob a [MIT License](LICENSE).]
+```bash
