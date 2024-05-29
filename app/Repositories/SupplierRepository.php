@@ -22,13 +22,7 @@ class SupplierRepository implements SupplierRepositoryInterface
 
     public function getSupplierById(int $id): ?Supplier
     {
-        $supplier = $this->model->find($id);
-
-        if (!$supplier) {
-            throw new \Exception('Supplier not found');
-        }
-
-        return $supplier;
+        return $this->model->findOrFail($id);
     }
 
     public function createSupplier(array $data): Supplier
@@ -38,11 +32,11 @@ class SupplierRepository implements SupplierRepositoryInterface
 
     public function updateSupplier(Supplier $supplier, array $data): bool
     {
-        return $supplier->update($data);
+        return $this->model->where('id', $supplier->id)->update($data);
     }
 
     public function deleteSupplier(Supplier $supplier): bool
     {
-        return $supplier->delete();
+        return $this->model->where('id', $supplier->id)->delete();
     }
 }

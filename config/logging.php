@@ -125,9 +125,19 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        //TODO: Logs da aplicaçãon de gestão de estoque
+
         'products' => [
             'driver'               => 'daily',
             'path'                 => storage_path('logs/Product/product.log'),
+            'level'                => env('LOG_LEVEL', 'debug'),
+            'days'                 => env('LOG_DAILY_DAYS', 7),
+            'replace_placeholders' => true,
+        ],
+
+        'suppliers' => [
+            'driver'               => 'daily',
+            'path'                 => storage_path('logs/Supplier/supplier.log'),
             'level'                => env('LOG_LEVEL', 'debug'),
             'days'                 => env('LOG_DAILY_DAYS', 7),
             'replace_placeholders' => true,

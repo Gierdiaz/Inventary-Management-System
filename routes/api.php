@@ -7,28 +7,39 @@ use App\Http\Controllers\{
     UserController};
 use Illuminate\Support\Facades\Route;
 
-Route::post('/users', [UserController::class, 'store']);
-Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{user}', [UserController::class, 'show']);
-Route::put('/users/{user}', [UserController::class, 'update']);
-Route::post('/users/{user}', [UserController::class, 'destroy']);
+Route::prefix('users')->group(function () {
+    Route::post('/', [UserController::class, 'store']);
+    Route::get('/', [UserController::class, 'index']);
+    Route::get('/{user}', [UserController::class, 'show']);
+    Route::put('/{user}', [UserController::class, 'update']);
+    Route::delete('/{user}', [UserController::class, 'destroy']);
+    Route::put('/{user}/assign-admin-role', [UserController::class, 'assignAdminRole']);
+    Route::put('/{user}/revoke-admin-role', [UserController::class, 'revokeAdminRole']);
+});
 
-Route::put('/users/{user}/assign-admin-role', [UserController::class, 'assignAdminRole']);
-Route::put('/users/{user}/revoke-admin-role', [UserController::class, 'revokeAdminRole']);
+// Rotas relacionadas às categorias
+Route::prefix('categories')->group(function () {
+    Route::get('/', [CategoryController::class, 'index']);
+    Route::get('/{category}', [CategoryController::class, 'show']);
+    Route::post('/', [CategoryController::class, 'store']);
+    Route::put('/{category}', [CategoryController::class, 'update']);
+    Route::delete('/{category}', [CategoryController::class, 'destroy']);
+});
 
-Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/categories/{category}', [CategoryController::class, 'show']);
-Route::post('/categories', [CategoryController::class, 'store']);
-Route::put('/categories/{category}', [CategoryController::class, 'update']);
-Route::delete('/categories/{category}', [CategoryController::class, 'destroy']);
+// Rotas relacionadas aos fornecedores
+Route::prefix('suppliers')->group(function () {
+    Route::get('/', [SuppliersController::class, 'index']);
+    Route::get('/{supplier}', [SuppliersController::class, 'show']);
+    Route::post('/', [SuppliersController::class, 'store']);
+    Route::put('/{supplier}', [SuppliersController::class, 'update']);
+    Route::delete('/{supplier}', [SuppliersController::class, 'destroy']);
+});
 
-Route::get('/suppliers', [SuppliersController::class, 'index']);
-Route::get('/suppliers/{supplier}', [SuppliersController::class, 'show']);
-Route::post('/suppliers', [SuppliersController::class, 'store']);
-Route::put('/suppliers/{supplier}', [SuppliersController::class, 'update']);
-Route::delete('/suppliers/{supplier}', [SuppliersController::class, 'destroy']);
-
-Route::get('/products', [ProductController::class, 'index']);
-Route::get('/products/{product}', [ProductController::class, 'show']);
-Route::post('/products', [ProductController::class, 'store']);
-Route::put('/products/{product}', [ProductController::class, 'update']);
+// Rotas relacionadas aos produtos
+Route::prefix('products')->group(function () {
+    Route::get('/', [ProductController::class, 'index']);
+    Route::get('/{product}', [ProductController::class, 'show']);
+    Route::post('/', [ProductController::class, 'store']);
+    Route::put('/{product}', [ProductController::class, 'update']);
+    Route::delete('/{product}', [ProductController::class, 'destroy']);
+});
