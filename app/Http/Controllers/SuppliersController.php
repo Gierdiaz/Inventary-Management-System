@@ -23,7 +23,7 @@ class SuppliersController extends Controller
 
             if ($supplier->isEmpty()) {
                 return response()->json([
-                    'message' => 'No suppliers found',
+                    'Message' => 'Suppliers not found',
                 ], Response::HTTP_NOT_FOUND);
             }
 

@@ -2,8 +2,18 @@
 
 namespace App\Providers;
 
-use App\Contracts\{CategoryRepositoryInterface, SupplierRepositoryInterface, UserRepositoryInterface};
-use App\Repositories\{CategoryRepository, SupplierRepository, UserRepository};
+use App\Contracts\{
+    CategoryRepositoryInterface,
+    ProductRepositoryInterface,
+    SupplierRepositoryInterface,
+    UserRepositoryInterface};
+
+use App\Repositories\{
+    CategoryRepository,
+    ProductRepository,
+    SupplierRepository,
+    UserRepository};
+
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -16,6 +26,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UserRepositoryInterface::class, UserRepository::class);
         $this->app->bind(CategoryRepositoryInterface::class, CategoryRepository::class);
         $this->app->bind(SupplierRepositoryInterface::class, SupplierRepository::class);
+        $this->app->bind(ProductRepositoryInterface::class, ProductRepository::class);
     }
 
     /**

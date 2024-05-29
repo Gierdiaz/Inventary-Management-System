@@ -125,6 +125,14 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+        'products' => [
+            'driver'               => 'daily',
+            'path'                 => storage_path('logs/Product/product.log'),
+            'level'                => env('LOG_LEVEL', 'debug'),
+            'days'                 => env('LOG_DAILY_DAYS', 7),
+            'replace_placeholders' => true,
+        ],
+
     ],
 
 ];

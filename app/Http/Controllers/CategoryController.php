@@ -41,10 +41,7 @@ class CategoryController extends Controller
                 'categories' => CategoryResource::collection($categories),
             ], response::HTTP_OK);
         } catch (Exception $exception) {
-            return response()->json([
-                'Error'   => 'Internal Server Error',
-                'Message' => 'An unexpected error occurred.' . $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpect error ocurred ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -54,19 +51,14 @@ class CategoryController extends Controller
             $category = $this->categoryRepository->getCategoryById($id);
 
             if (!$category) {
-                return response()->json([
-                    'Error' => 'Category not found',
-                ], Response::HTTP_NOT_FOUND);
+                return response()->json(Response::HTTP_NOT_FOUND);
             };
 
             return response()->json([
                 'Category' => new CategoryResource($category),
             ], Response::HTTP_OK);
         } catch (Exception $exception) {
-            return response()->json([
-                'Error'   => 'Internal Server Error',
-                'Message' => 'An unexpected error occurred.' . $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpect error ocurred ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -89,10 +81,7 @@ class CategoryController extends Controller
 
             DB::rollBack();
 
-            return response()->json([
-                'Error'   => 'Internal Server Error',
-                'Message' => 'An unexpected error occurred.' . $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpect error ocurred ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -112,18 +101,17 @@ class CategoryController extends Controller
             }
 
             $this->categoryRepository->updateCategory($category, $validated);
+
             DB::commit();
 
             return response()->json([
                 'Category' => new CategoryResource($category),
             ], Response::HTTP_OK);
         } catch (Exception $exception) {
+
             DB::rollBack();
 
-            return response()->json([
-                'Error'   => 'Internal Server Error',
-                'Message' => 'An unexpected error occurred.' . $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpect error ocurred ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
@@ -144,10 +132,7 @@ class CategoryController extends Controller
                 'Message' => 'Category deleted successfully.',
             ], Response::HTTP_OK);
         } catch (Exception $exception) {
-            return response()->json([
-                'Error'   => 'Internal Server Error',
-                'Message' => 'An unexpected error occurred.' . $exception->getMessage(),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpect error ocurred ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 

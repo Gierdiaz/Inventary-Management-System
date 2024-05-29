@@ -1,6 +1,10 @@
 <?php
 
-use App\Http\Controllers\{CategoryController, SuppliersController, UserController};
+use App\Http\Controllers\{
+    CategoryController,
+    ProductController,
+    SuppliersController,
+    UserController};
 use Illuminate\Support\Facades\Route;
 
 Route::post('/users', [UserController::class, 'store']);
@@ -23,3 +27,8 @@ Route::get('/suppliers/{supplier}', [SuppliersController::class, 'show']);
 Route::post('/suppliers', [SuppliersController::class, 'store']);
 Route::put('/suppliers/{supplier}', [SuppliersController::class, 'update']);
 Route::delete('/suppliers/{supplier}', [SuppliersController::class, 'destroy']);
+
+Route::get('/products', [ProductController::class, 'index']);
+Route::get('/products/{product}', [ProductController::class, 'show']);
+Route::post('/products', [ProductController::class, 'store']);
+Route::put('/products/{product}', [ProductController::class, 'update']);
