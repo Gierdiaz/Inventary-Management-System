@@ -1,6 +1,6 @@
-## Este é um projeto de Sistema de Gerenciamento de Inventário para aprimorar o meu conhecimento no desenvolvimento de APIs com Laravel.
-
 # ERP de Gerenciamento de Inventário
+
+## Este é um projeto de Sistema de Gerenciamento de Inventário para aprimorar o meu conhecimento no desenvolvimento de APIs com Laravel.
 
 Este projeto é um ERP (Enterprise Resource Planning) desenvolvido com Laravel, focado na gestão eficiente de estoques. A aplicação é implementada como uma API RESTful, abrangendo funcionalidades essenciais para o gerenciamento de produtos, fornecedores, compras, vendas e relatórios de estoque.
 
