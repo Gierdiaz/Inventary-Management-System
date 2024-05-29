@@ -14,6 +14,7 @@ Este projeto é um ERP (Enterprise Resource Planning) desenvolvido com Laravel, 
 - **Movimentos de Estoque:** Registro de entradas e saídas de produtos no estoque.
 - **Compras:** Registro e acompanhamento de compras feitas de fornecedores, com detalhes de itens comprados e valor total.
 - **Vendas:** Gerenciamento de transações de vendas, incluindo informações do cliente, itens vendidos e valor total.
+- **Relatórios de Estoque:** Geração de relatórios abrangentes para monitoramento e análise de estoque.
 
 
 ### Características
