@@ -34,4 +34,9 @@ class ProductRepository implements ProductRepositoryInterface
     {
         return $this->model->where('id', $product->id)->update($data);
     }
+
+    public function deleteProduct(Product $product): bool
+    {
+        return $this->model->where('id', $product->id)->delete();
+    }
 }
