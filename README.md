@@ -72,6 +72,7 @@ A API fornece endpoints para gerenciar produtos, fornecedores, compras, vendas e
 Para listar todos os produtos:
 
 GET /api/produtos
+```bash
 
 A aplicação estará disponível em `http://localhost:8000`.
 
@@ -82,4 +83,12 @@ Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou enviar
 ## Licença
 
 Este projeto está licenciado sob a [MIT License](LICENSE).]
-```bash
+
+POST /api/produtos
+Content-Type: application/json
+{
+    "nome": "Nome do Produto",
+    "descricao": "Descrição do Produto",
+    "preco": 100.00,
+    "quantidade": 10
+}
