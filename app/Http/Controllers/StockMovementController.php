@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Contracts\StockMovementRepositoryInterface;
+use App\Http\Requests\StockMovementFormRequest;
 use App\Http\Resources\StockMovementResource;
 use Exception;
-use Illuminate\Http\Response;
+use Illuminate\Http\{JsonResponse, Response};
+use Illuminate\Support\Facades\{DB, Log};
 
 class StockMovementController extends Controller
 {
@@ -16,7 +18,7 @@ class StockMovementController extends Controller
         $this->stockMovementRepository = $stockMovementRepository;
     }
 
-    public function index()
+    public function index(): JsonResponse
     {
         try {
             $stockMovements = $this->stockMovementRepository->getStockMovements();
@@ -31,18 +33,42 @@ class StockMovementController extends Controller
         }
     }
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
         try {
-           $stockMovement = $this->stockMovementRepository->getStockMovementById($id);
+            $stockMovement = $this->stockMovementRepository->getStockMovementById($id);
 
+            if (is_null($stockMovement)) {
+                return response()->json(['Message' => 'Stock movement not found'], Response::HTTP_NOT_FOUND);
+            }
 
-
-
-           
-        } catch (\Throwable $th) {
-            //throw $th;
+            return response()->json(['Stock Movement' => StockMovementResource::make($stockMovement)], Response::HTTP_OK);
+        } catch (Exception $exception) {
+            return response()->json(['Message' => 'An unexpected error occurred. ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
+    public function store(StockMovementFormRequest $request): JsonResponse
+    {
+        DB::beginTransaction();
+
+        try {
+
+            $validated = $request->validated();
+
+            $stockMovement = $this->stockMovementRepository->createStockMovement($validated);
+
+            DB::commit();
+
+            Log::channel('stockMovements')->info('Stock Movement created successfully', ['stockMovement', $stockMovement->toArray()]);
+
+            return response()->json(['Stock Movement' => StockMovementResource::make($stockMovement)], Response::HTTP_CREATED);
+        } catch (Exception $exception) {
+            DB::rollBack();
+
+            Log::channel('stockMovements')->error('An error occurred while creating a stock movement', ['message' => $exception->getMessage(), 'trace' => $exception->getTrace()]);
+
+            return response()->json(['Message' => 'An unexpected error occurred. ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+        }
+    }
 }

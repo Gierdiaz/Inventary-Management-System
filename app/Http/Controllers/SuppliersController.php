@@ -29,11 +29,11 @@ class SuppliersController extends Controller
 
             return response()->json(['Suppliers' => SupplierResource::collection($suppliers)], Response::HTTP_OK);
         } catch (Exception $exception) {
-            response()->json(['Message' => 'An unexpected error occurred. ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
+            return response()->json(['Message' => 'An unexpected error occurred. ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function show($id)
+    public function show($id): JsonResponse
     {
         try {
             $supplier = $this->supplierRepository->getSupplierById($id);
@@ -48,7 +48,7 @@ class SuppliersController extends Controller
         }
     }
 
-    public function store(SupplierFormRequest $request)
+    public function store(SupplierFormRequest $request): JsonResponse
     {
 
         DB::beginTransaction();
@@ -67,13 +67,13 @@ class SuppliersController extends Controller
         } catch (Exception $exception) {
             DB::rollBack();
 
-            Log::channel('suppliers')->error('An unexpected error occurred durante supplier store: ', ['message' => $exception->getTrace()]);
+            Log::channel('suppliers')->error('An error occurred while creating a supplier: ', ['message' => $exception->getTrace()]);
 
             return response()->json(['Message' => 'An unexpected error occurred. ' . $exception->getMessage()], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
 
-    public function update(SupplierFormRequest $request, $id)
+    public function update(SupplierFormRequest $request, $id): JsonResponse
     {
 
         DB::beginTransaction();
@@ -99,7 +99,7 @@ class SuppliersController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete($id): JsonResponse
     {
         try {
 

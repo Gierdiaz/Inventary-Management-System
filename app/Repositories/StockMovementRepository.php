@@ -24,4 +24,19 @@ class StockMovementRepository implements StockMovementRepositoryInterface
     {
         return $this->model->with('product')->findOrFail($id);
     }
+
+    public function createStockMovement(array $data): StockMovement
+    {
+        return $this->model->create($data);
+    }
+
+    public function updateStockMovement(StockMovement $stockMovement, array $data): bool
+    {
+        return $this->model->where('id', $stockMovement->id)->update($data);
+    }
+
+    public function deleteStockMovement(StockMovement $stockMovement): bool
+    {
+        return $this->model->where('id', $stockMovement->id)->delete();
+    }
 }

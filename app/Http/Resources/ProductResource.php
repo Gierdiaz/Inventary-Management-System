@@ -2,9 +2,22 @@
 
 namespace App\Http\Resources;
 
+use App\Models\{Category, Supplier};
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property int $id
+ * @property string $name
+ * @property string $description
+ * @property string $barcode
+ * @property Category $category
+ * @property float $cost_price
+ * @property float $sale_price
+ * @property string $unit
+ * @property int $stock_min
+ * @property Supplier $supplier
+ */
 class ProductResource extends JsonResource
 {
     /**

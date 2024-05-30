@@ -2,9 +2,18 @@
 
 namespace App\Http\Resources;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * @property int $id
+ * @property Product $product
+ * @property float $quantity
+ * @property string $type
+ * @property \Carbon\Carbon $date
+ * @property string $note
+ */
 class StockMovementResource extends JsonResource
 {
     /**
@@ -30,9 +39,8 @@ class StockMovementResource extends JsonResource
             }),
             'quantity'      => $this->quantity,
             'movement type' => $this->type,
-            'movement date' => $this->date->format('d/m/Y H:i:s'),
+            'movement_date' => $this->date->format('d-m-Y'),
             'note'          => $this->note,
-
         ];
     }
 }

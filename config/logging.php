@@ -143,6 +143,13 @@ return [
             'replace_placeholders' => true,
         ],
 
+        'stockMovements' => [
+            'driver'               => 'daily',
+            'path'                 => storage_path('logs/stockMovement/stockMovement.log'),
+            'level'                => env('LOG_LEVEL', 'debug'),
+            'days'                 => env('LOG_DAILY_DAYS', 7),
+            'replace_placeholders' => true,
+        ],
     ],
 
 ];
