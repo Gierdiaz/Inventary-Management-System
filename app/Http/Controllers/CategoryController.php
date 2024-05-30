@@ -64,11 +64,12 @@ class CategoryController extends Controller
 
     public function store(CategoryFormRequest $request): JsonResponse
     {
+
+        DB::beginTransaction();
+
         try {
 
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $category = $this->categoryRepository->createCategory($validated);
 
@@ -87,10 +88,11 @@ class CategoryController extends Controller
 
     public function update(CategoryFormRequest $request, $id): JsonResponse
     {
+
+        DB::beginTransaction();
+
         try {
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $category = $this->categoryRepository->getCategoryById($id);
 

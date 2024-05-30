@@ -3,6 +3,7 @@
 use App\Http\Controllers\{
     CategoryController,
     ProductController,
+    StockMovementController,
     SuppliersController,
     UserController};
 use Illuminate\Support\Facades\Route;
@@ -42,4 +43,13 @@ Route::prefix('products')->group(function () {
     Route::post('/', [ProductController::class, 'store']);
     Route::put('/{product}', [ProductController::class, 'update']);
     Route::delete('/{product}', [ProductController::class, 'destroy']);
+});
+
+// Rotas relacionadas ao movimento de estoque
+Route::prefix('stock-movements')->group(function () {
+    Route::get('/', [StockMovementController::class, 'index']);
+    Route::get('/{stockMovement}', [StockMovementController::class, 'show']);
+    Route::post('/', [StockMovementController::class, 'store']);
+    Route::put('/{stockMovement}', [StockMovementController::class, 'update']);
+    Route::delete('/{stockMovement}', [StockMovementController::class, 'destroy']);
 });

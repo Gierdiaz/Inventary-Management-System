@@ -23,6 +23,10 @@ class StockMovement extends Model
         'updated_at',
     ];
 
+    protected $casts = [
+        'date' => 'datetime',
+    ];
+
     protected $table = 'stock_movements';
 
     public function product(): BelongsTo

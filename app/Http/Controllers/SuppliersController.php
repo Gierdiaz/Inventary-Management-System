@@ -50,11 +50,12 @@ class SuppliersController extends Controller
 
     public function store(SupplierFormRequest $request)
     {
+
+        DB::beginTransaction();
+
         try {
 
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $supplier = $this->supplierRepository->createSupplier($validated);
 
@@ -74,10 +75,11 @@ class SuppliersController extends Controller
 
     public function update(SupplierFormRequest $request, $id)
     {
+
+        DB::beginTransaction();
+
         try {
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $supplier = $this->supplierRepository->getSupplierById($id);
 

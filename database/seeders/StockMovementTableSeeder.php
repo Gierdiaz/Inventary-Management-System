@@ -18,7 +18,7 @@ class StockMovementTableSeeder extends Seeder
             'quantity'   => 5,
             'type'       => 'entrada',
             'date'       => now(),
-            'notes'      => 'Recebimento de novo estoque.',
+            'note'       => 'Recebimento de novo estoque.',
         ]);
 
         StockMovement::create([
@@ -26,7 +26,7 @@ class StockMovementTableSeeder extends Seeder
             'quantity'   => 3,
             'type'       => 'saida',
             'date'       => now(),
-            'notes'      => 'Venda para cliente X.',
+            'note'       => 'Venda para cliente X.',
         ]);
 
         StockMovement::create([
@@ -34,7 +34,7 @@ class StockMovementTableSeeder extends Seeder
             'quantity'   => 10,
             'type'       => 'entrada',
             'date'       => now(),
-            'notes'      => 'Recebimento de novo estoque.',
+            'note'       => 'Recebimento de novo estoque.',
         ]);
 
         StockMovement::create([
@@ -42,7 +42,7 @@ class StockMovementTableSeeder extends Seeder
             'quantity'   => 20,
             'type'       => 'saida',
             'date'       => now(),
-            'notes'      => 'Exames realizados para o hospital Y.',
+            'note'       => 'Exames realizados para o hospital Y.',
         ]);
     }
 }

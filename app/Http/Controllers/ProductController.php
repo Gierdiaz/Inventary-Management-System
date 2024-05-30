@@ -51,11 +51,12 @@ class ProductController extends Controller
 
     public function store(ProductFormRequest $request)
     {
+
+        DB::beginTransaction();
+
         try {
 
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $product = $this->productRepository->createProduct($validated);
 
@@ -75,10 +76,11 @@ class ProductController extends Controller
 
     public function update(ProductFormRequest $request, $id)
     {
+
+        DB::beginTransaction();
+
         try {
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $product = $this->productRepository->getProductById($id);
 

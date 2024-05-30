@@ -75,11 +75,11 @@ class UserController extends Controller
 
     public function store(UserFormRequest $request)
     {
+        DB::beginTransaction();
+
         try {
 
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $validated['password'] = bcrypt($validated['password']);  // Criptografa a senha
 
@@ -108,10 +108,10 @@ class UserController extends Controller
 
     public function update(UserFormRequest $request, $id)
     {
+        DB::beginTransaction();
+
         try {
             $validated = $request->validated();
-
-            DB::beginTransaction();
 
             $user = $this->userRepository->update($validated, $id);
 
@@ -133,11 +133,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         try {
-            DB::beginTransaction();
 
             $user = $this->userRepository->delete($id);
-
-            DB::commit();
 
             if (!$user) {
                 return response()->json(['error' => 'User not found'], Response::HTTP_NOT_FOUND);

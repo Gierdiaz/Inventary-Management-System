@@ -15,8 +15,8 @@ return new class () extends Migration {
             $table->foreignId('product_id')->constrained('products');
             $table->integer('quantity');
             $table->string('type');
-            $table->date('date');
-            $table->text('notes');
+            $table->dateTime('date');
+            $table->text('note');
             $table->foreignId('profile_id')->nullable()->constrained('profiles');
             $table->timestamps();
         });
