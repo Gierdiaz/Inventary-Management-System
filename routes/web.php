@@ -7,6 +7,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
 // Rotas relacionadas aos produtos
 // Route::get('/products', [ProductController::class, 'index'])->name('products.index');

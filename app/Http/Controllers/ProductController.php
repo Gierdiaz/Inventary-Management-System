@@ -7,7 +7,7 @@ use App\Http\Requests\ProductFormRequest;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
 use Exception;
-use Illuminate\Http\Response;
+use Illuminate\Http\{JsonResponse, Response};
 use Illuminate\Support\Facades\{DB, Log};
 use Inertia\Inertia;
 
@@ -29,7 +29,7 @@ class ProductController extends Controller
     //     ]);
     // }
 
-    public function index()
+    public function index(): JsonResponse
     {
         try {
             $products = $this->productRepository->getProducts();
@@ -60,7 +60,7 @@ class ProductController extends Controller
         }
     }
 
-    public function store(ProductFormRequest $request)
+    public function store(ProductFormRequest $request): JsonResponse
     {
 
         DB::beginTransaction();
@@ -85,7 +85,7 @@ class ProductController extends Controller
         }
     }
 
-    public function update(ProductFormRequest $request, $id)
+    public function update(ProductFormRequest $request, $id): JsonResponse
     {
 
         DB::beginTransaction();
@@ -111,7 +111,7 @@ class ProductController extends Controller
         }
     }
 
-    public function delete($id)
+    public function delete($id): JsonResponse
     {
         try {
 
