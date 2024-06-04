@@ -5,11 +5,9 @@ namespace App\Http\Controllers;
 use App\Contracts\ProductRepositoryInterface;
 use App\Http\Requests\ProductFormRequest;
 use App\Http\Resources\ProductResource;
-use App\Models\Product;
 use Exception;
 use Illuminate\Http\{JsonResponse, Response};
 use Illuminate\Support\Facades\{DB, Log};
-use Inertia\Inertia;
 
 class ProductController extends Controller
 {
@@ -19,15 +17,6 @@ class ProductController extends Controller
     {
         $this->productRepository = $productRepository;
     }
-
-    // public function index()
-    // {
-    //     $products = Product::with(['supplier', 'category'])->get();
-
-    //     return Inertia::render('Products/Index', [
-    //         'products' => $products
-    //     ]);
-    // }
 
     public function index(): JsonResponse
     {
